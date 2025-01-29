@@ -30,7 +30,7 @@ public class CommonUtil {
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 
-		helper.setFrom("daspabitra55@gmail.com", "Shooping Cart");
+		helper.setFrom("daspabitra55@gmail.com", "EasyCart");
 		helper.setTo(reciepentEmail);
 
 		String content = "<p>Hello,</p>" + "<p>You have requested to reset your password.</p>"
@@ -55,19 +55,19 @@ public class CommonUtil {
 	public Boolean sendMailForProductOrder(ProductOrder order,String status) throws Exception
 	{
 		
-		msg="<p>Hello [[name]],</p>"
-				+ "<p>Thank you order <b>[[orderStatus]]</b>.</p>"
-				+ "<p><b>Product Details:</b></p>"
-				+ "<p>Name : [[productName]]</p>"
-				+ "<p>Category : [[category]]</p>"
-				+ "<p>Quantity : [[quantity]]</p>"
-				+ "<p>Price : [[price]]</p>"
-				+ "<p>Payment Type : [[paymentType]]</p>";
+		msg="<p>Բարև [[name]],</p>"
+				+ "<p>Շնորհակալություն գնումների համար <b>[[orderStatus]]</b>.</p>"
+				+ "<p><b>Ապրանքի մանրամասներ՝</b></p>"
+				+ "<p>Անվանում՝ [[productName]]</p>"
+				+ "<p>Կատեգորիա՝ [[category]]</p>"
+				+ "<p>Քանակ՝ [[quantity]]</p>"
+				+ "<p>Արժեք՝ [[price]]</p>"
+				+ "<p>Վճարման եղանակ [[paymentType]]</p>";
 		
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 
-		helper.setFrom("daspabitra55@gmail.com", "Shooping Cart");
+		helper.setFrom("daspabitra55@gmail.com", "EasyCart");
 		helper.setTo(order.getOrderAddress().getEmail());
 
 		msg=msg.replace("[[name]]",order.getOrderAddress().getFirstName());
@@ -78,7 +78,7 @@ public class CommonUtil {
 		msg=msg.replace("[[price]]", order.getPrice().toString());
 		msg=msg.replace("[[paymentType]]", order.getPaymentType());
 		
-		helper.setSubject("Product Order Status");
+		helper.setSubject("Պատվերի կարգավիճակը");
 		helper.setText(msg, true);
 		mailSender.send(message);
 		return true;
